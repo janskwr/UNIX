@@ -1,0 +1,1 @@
+for user in `getent passwd | cut -d: -f1`; do echo -ne "$user\t"; last -s today $user | wc -l | awk '{print $1-2}'; done

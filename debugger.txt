@@ -1,0 +1,13 @@
+cdm1
+
+getent passwd | cut -d: -f1
+
+for user in `getent passwd | cut -d: -f1`; do echo -ne "$user\t"; last -s today $user | wc -l; done
+
+
+
+
+for user in `getent passwd | cut -d: -f1`; do echo -ne "$user\t"; wc -l < last -s today $user; done
+
+
+for user in `getent passwd | cut -d: -f1`; do echo -ne "$user\t"; last -s today $user | wc -l | awk '{print $1-2}'; done
